@@ -1,34 +1,111 @@
-import React from "react";
+import { useState, FormEvent } from 'react';
 
-const ContactForm = () => {
+interface ContactFormProps {
+  onSubmitSuccess?: () => void;
+}
+
+const ContactForm = ({ onSubmitSuccess }: ContactFormProps) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      
+      if (onSubmitSuccess) {
+        setTimeout(onSubmitSuccess, 1500);
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
-    <form>
-      <h2 className="text-2xl font-bold mb-5 text-white">Contact Me</h2>
-      <div className="mb-3">
+    <form onSubmit={handleSubmit} className="space-y-4">
+      {submitStatus === 'success' && (
+        <div className="bg-green-500/20 border border-green-500 text-green-100 rounded-md p-3 text-sm">
+          Message sent successfully!
+        </div>
+      )}
+      
+      {submitStatus === 'error' && (
+        <div className="bg-red-500/20 border border-red-500 text-red-100 rounded-md p-3 text-sm">
+          Failed to send message. Please try again.
+        </div>
+      )}
+      
+      <div>
         <input
           type="text"
-          placeholder="Your name"
           name="name"
-          className="w-full px-3 py-2 text-sm text-gray-200 placeholder-gray-400 bg-white border-0 rounded shadow"
+          value={formData.name}
+          onChange={handleChange}
+          placeholder="Your Name"
+          required
+          className="w-full bg-black/50 border border-white/40 rounded-md p-3 text-white focus:border-purple-500 focus:outline-none"
         />
       </div>
-      <div className="mb-3">
+      
+      <div>
         <input
           type="email"
-          placeholder="Email"
           name="email"
-          className="w-full px-3 py-2 text-sm text-gray-200 placeholder-gray-400 bg-white border-0 rounded shadow"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Your Email"
+          required
+          className="w-full bg-black/50 border border-white/40 rounded-md p-3 text-white focus:border-purple-500 focus:outline-none"
         />
       </div>
-      <div className="mb-3">
-        <input
-          placeholder="Your message"
+      
+      <div>
+        <textarea
           name="message"
-          className="w-full px-3 py-2 text-sm text-gray-200 placeholder-gray-400 bg-white border-0 rounded shadow"
+          value={formData.message}
+          onChange={handleChange}
+          placeholder="Your Message"
+          required
+          rows={4}
+          className="w-full bg-black/50 border border-white/40 rounded-md p-3 text-white focus:border-purple-500 focus:outline-none"
         />
       </div>
-      <button className="px-6 mb-10 py-3 text-sm font-bold text-white uppercase transition-all duration-150 ease-linear bg-blue-500 hover:bg-blue-400">
-        Send a message
+      
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full bg-purple-500 hover:bg-blue-400 text-white font-semibold py-3 px-4 rounded-md transition-colors"
+      >
+        {isSubmitting ? 'Sending...' : 'Send Message'}
       </button>
     </form>
   );

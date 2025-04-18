@@ -3,12 +3,24 @@ import React from "react";
 import { HireMeButton } from "@/constants/styled-component";
 
 const HireMe = () => {
+  const handleDownload = () => {
+    const resumeUrl = '/resume.pdf';
+    
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'Charles_Quiroz_Resume.pdf'; 
+    
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
-    <div className="fixed bottom-10 right-6 flex items-center justify-center z-30">
-      <HireMeButton >
-        <button>
+    <div className="fixed bottom-10 left-6 flex items-center justify-center z-30">
+      <HireMeButton>
+        <button onClick={handleDownload}>
           <p className="button__text">
-            {"UI/UX Design . Backend Development".split("").map((char, i) => (
+            {"Cover Letter . Download it here . ".split("").map((char, i) => (
               <span key={i} style={{ "--index": i } as React.CSSProperties}>
                 {char}
               </span>

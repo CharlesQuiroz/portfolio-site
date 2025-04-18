@@ -1,63 +1,103 @@
+"use client"
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Typewriter from '../components/TypeWriter';
+import ContactModal from '../components/ContactModal';
 
 export default function Home() {
+  const [isContactModalOpen, setContactModalOpen] = useState(false);
+
+  const openContactModal = () => {
+    setContactModalOpen(true);
+  };
+
+  const closeContactModal = () => {
+    setContactModalOpen(false);
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+
+    return () => {
+      document.body.style.overflow = '';
+      document.documentElement.style.overflow = '';
+    };
+  }, []);
+
   return (
-    <main className='w-screen h-screen relative'>
-      <div className='flex items-center w-full h-full bg-cover bg-center' style={{ backgroundImage: "url('/city-of-stars-bg.jpg')", backgroundPositionY: "bottom" }}>
-        <div className="grid grid-col-2">
-          <div className='pl-20 md:pl-40 pb-56 md:pb-20 flex flex-col gap-5 z-[10] max-w-[750px]'>
-            <h1 className='text-[50px] text-white font-semibold'>
-              Where Ideas Come to Life
-              <span className='text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500'>
-                {" "}
-                Web Development
-              </span>
-            </h1>
-            <p className='text-gray-200 hidden md:block'>
+    <main className='w-screen h-screen relative overflow-hidden'>
+      <div className='flex items-center w-full h-full bg-cover bg-center' 
+        style={{ 
+          backgroundImage: "url('/city-of-stars-bg.jpg')", 
+          backgroundPositionY: "bottom"
+        }}>
+        <div className="grid grid-cols-1 md:grid-cols-2 bg-black/50 w-full">
+          <div className='px-6 md:px-10 lg:pl-40 pb-56 pt-10 md:pt-20 md:pb-20 flex flex-col gap-6 z-[10] max-w-[900px]'>
+            <div className="scale-110 origin-left">
+              <Typewriter />
+            </div>
+
+            <p className='text-gray-200 text-lg md:text-xl hidden md:block max-w-[95%]'>
               Hi there! I'm excited to share my work with you. I'm a developer and graphics enthusiast, passionate about building engaging web experiences and creating visually appealing designs. I enjoy tackling both front-end and back-end challenges, and I'm always eager to learn and grow.
             </p>
-            <div className='flex-col md:flex-row hidden md:flex gap-5'>
-              <Link href='/my-skills' className='rounded-[20px] group relative bg-blue-500 hover:bg-blue-400 px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
+
+            <div className='flex-col md:flex-row hidden md:flex gap-5 mt-4'>
+              <Link href='/my-skills' className='rounded-[20px] group relative bg-purple-500 hover:bg-blue-400 px-6 border border-white py-4 text-xl text-white max-w-[220px] text-center'>
                 Learn More
               </Link>
-              <Link href='/my-projects' className='rounded-[20px] group relative bg-transparent hover:bg-blue-400 px-5  border border-white py-3 text-lg text-white max-w-[200px]'>
+              <Link href='/my-projects' className='rounded-[20px] group relative bg-transparent hover:bg-blue-400 px-6 border border-white py-4 text-xl text-white max-w-[220px] text-center'>
                 <div className='absolute rounded-[20px] z-[1] bg-white inset-0 opacity-0 group-hover:opacity-20' />
                 My Projects
               </Link>
-              <Link href='/contact-me' className='rounded-[20px] group relative bg-transparent hover:bg-blue-400 px-5  border border-white py-3 text-lg text-white max-w-[200px]'>
+              <button 
+                onClick={openContactModal}
+                className='rounded-[20px] group relative bg-transparent hover:bg-blue-400 px-6 border border-white py-4 text-xl text-white max-w-[220px] text-center'
+              >
                 <div className='absolute rounded-[20px] z-[1] bg-white inset-0 opacity-0 group-hover:opacity-20' />
-                Contact Me
-              </Link>
+                Contact Me  
+              </button>
+            </div>
+          </div>
+
+          <div className='hidden md:flex items-center justify-center z-[10]'>
+            <div className='relative scale-110 animate-float'>
+              <div className='w-96 h-96 rounded-full border-4 border-white/70 flex items-center justify-center overflow-hidden relative'>
+                <div className='absolute w-full h-full bg-blue-500/30 blur-md'></div>
+                <div className='rounded-full overflow-hidden w-88 h-88 relative'>
+                  <Image
+                    src="/Profile.jpg"
+                    alt="Profile"
+                    layout="fill"
+                    objectFit="cover"
+                    className="rounded-full"
+                    priority
+                  />
+                </div>
+              </div>
+              <div className='absolute -top-5 -left-5 w-10 h-10 bg-blue-500 rounded-full blur-sm'></div>
+              <div className='absolute -bottom-3 -right-3 w-8 h-8 bg-purple-500 rounded-full blur-sm'></div>
             </div>
           </div>
         </div>
-        <div className='pl-20 md:pl-40 pb-56 md:pb-20 flex flex-col gap-5 z-[10] max-w-[750px]'>
-          <div className='absolute flex bottom-10 z-[20] right-5 flex-col md:hidden gap-5'>
-            <Link href='/my-skills' className='rounded-[20px] group relative bg-blue-500 px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
-              Learn More
-            </Link>
-            <Link href='/my-projects' className='rounded-[20px] group relative bg-transparent px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
-              My Projects
-            </Link>
-            <Link href='/contact-me' className='rounded-[20px] group relative bg-transparent px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
-              Contact Me
-            </Link>
-          </div>
+
+        <div className='absolute flex bottom-10 z-[20] right-5 flex-col md:hidden gap-5'>
+          <Link href='/my-skills' className='rounded-[20px] group relative bg-purple-500 px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
+            Learn More
+          </Link>
+          <Link href='/my-projects' className='rounded-[20px] group relative bg-transparent px-5 border border-white py-3 text-lg text-white max-w-[200px]'>
+            My Projects
+          </Link>
+          <button 
+            onClick={openContactModal}
+            className='rounded-[20px] group relative bg-transparent px-5 border border-white py-3 text-lg text-white max-w-[200px]'
+          >
+            Contact Me
+          </button>
         </div>
       </div>
-      {/* 
-      <div className="absolute bottom-0 right-0 z-[10]">
-        <Image src="/Man.svg" 
-        alt="#" height={300} 
-        width={300} 
-        unoptimized className="absolute top-[-100]" />
-        <Image src="/" 
-        alt="#" 
-        height={480} 
-        width={480} />
-      </div>*/}
-
+      
       <div className="absolute bottom-[-300px] z-[5] w-full h-full bg-cover bg-center">
         <Image src="/City.png"
           alt="City"
@@ -71,6 +111,8 @@ export default function Home() {
         height={300}
         width={300}
         unoptimized className="absolute top-10 left-0 z-[10]" />
-    </main >
+
+      <ContactModal isOpen={isContactModalOpen} onClose={closeContactModal} />
+    </main>
   );
 }

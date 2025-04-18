@@ -56,12 +56,6 @@ export const FrontAndBackEndSkilLData = [
     height: 80,
   },
   {
-    name: "Node js",
-    Image: "/node-js.png",
-    width: 80,
-    height: 80,
-  },
-  {
     name: "C# ",
     Image: "/C-Sharp-logo.png",
     width: 80,
@@ -137,61 +131,36 @@ export const Socials = [
   {
     name: "Discord",
     src: "/discord.svg",
+    link: "https://discord.com" 
   },
   {
-    name: "Facebook",
-    src: "/facebook.svg",
+    name: "Github",
+    src: "/github-logo.svg",
+    link:"https://github.com/Hoshi-Systems"
   },
   {
     name: "LinkedIn",
     src: "/linkedln-logo.png",
+    link:"https://linkedin.com/in/charles-wayne-quiroz-84b002285"
   },
 ];
 
 export const Coding_Projects = [
   {
-    title: "Modern Nextjs Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/NextWebsite.png",
+    title: "Beepney: Ang Jeepney ni Utoy",
+    text: "A prototype UI/UX Design created in Figma about a mobile application that users can use for tracking jeepney routes in the Province of Batangas",
+    src: "/beepney.png",
   },
   {
-    title: "Space Themed Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/SpaceWebsite.png",
-  },
-  {
-    title: "Modern Nextjs Portfolio",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/WebPortfolio.png",
-  },
-  {
-    title: "Matrix themed Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/Matrix.png",
-  },
-];
-
-export const UI_UX_Projects = [
-  {
-    title: "Modern Nextjs Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/NextWebsite.png",
-  },
-  {
-    title: "Space Themed Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/SpaceWebsite.png",
+    title: "Service Academy",
+    text: "Developed a client-based comprehensive Open University web application for a client, enabling accessible online education This project empowers users to enroll in courses, earn certificates, and advance their learning journey. For administrators, it automates critical tasks like enrollment and certificate issuance, while integrating AI-driven analytics for impact assessment, prescriptive insights, and descriptive reporting to optimize educational outcomes.",
+    src: "/service-academy.png",
   },
   {
     title: "Modern Nextjs Portfolio",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/WebPortfolio.png",
-  },
-  {
-    title: "Matrix themed Website",
-    text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.",
-    src: "/Matrix.png",
-  },
+    text: "My personal portfolio website built with Next.js. Created as a learning exercise and a space to showcase my web development journey and acquired skills.",
+    src: "/Portfolio-Website.png",
+  }
 ];
 
 export const NavLinks = [
@@ -209,10 +178,5 @@ export const NavLinks = [
     name: "/my-projects",
     icon: RxDashboard,
     link: "/my-projects",
-  },
-  {
-    name: "/contact-me",
-    icon: RxClipboard,
-    link: "/contact-me",
-  },
+  }
 ];
