@@ -20,7 +20,7 @@ const Page = () => {
               & {" "}
             </span> Technologies </h1>
           <p className="text-white-400 text-[20px]">
-          This portfolio demonstrates a foundational skill set in full-stack development, encompassing front-end technologies like React and Next.js, robust back-end systems built with C# and Java, and database management using Postgres. Additionally, it showcases my capabilities in UI/UX design and graphic design. As a recent graduate, I"m eager to expand upon these skills and contribute to innovative projects.          </p>
+          This portfolio demonstrates a foundational skill set in full-stack development, encompassing front-end technologies like React and Next.js, robust back-end systems built with C# and Java, and database management using Postgres. Additionally, it showcases my capabilities in UI/UX design and graphic design. As a recent graduate, I&quot;m eager to expand upon these skills and contribute to innovative projects.          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 p-2">
           <div>

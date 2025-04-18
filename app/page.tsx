@@ -40,7 +40,7 @@ export default function Home() {
             </div>
 
             <p className="text-gray-200 text-lg md:text-xl hidden md:block max-w-[95%]">
-              Hi there! I"m excited to share my work with you. I"m a developer and graphics enthusiast, passionate about building engaging web experiences and creating visually appealing designs. I enjoy tackling both front-end and back-end challenges, and I"m always eager to learn and grow.
+              Hi there! I&quot;m excited to share my work with you. I&quot;m a developer and graphics enthusiast, passionate about building engaging web experiences and creating visually appealing designs. I enjoy tackling both front-end and back-end challenges, and I&quot;m always eager to learn and grow.
             </p>
 
             <div className="flex-col md:flex-row hidden md:flex gap-5 mt-4">
