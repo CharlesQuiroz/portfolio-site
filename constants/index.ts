@@ -148,7 +148,7 @@ export const Socials = [
 export const Coding_Projects = [
   {
     title: "Beepney: Ang Jeepney ni Utoy",
-    text: "A prototype UI/UX Design created in Figma about a mobile application that users can use for tracking jeepney routes in the Province of Batangas",
+    text: "Crafted a compelling UI/UX prototype in Figma for a mobile application, empowering users across Batangas Province to effortlessly track jeepney routes and navigate their commutes with ease",
     src: "/beepney.png",
   },
   {
@@ -158,7 +158,7 @@ export const Coding_Projects = [
   },
   {
     title: "Modern Nextjs Portfolio",
-    text: "My personal portfolio website built with Next.js. Created as a learning exercise and a space to showcase my web development journey and acquired skills.",
+    text: "Developed my personal portfolio website using Next.js as an immersive learning experience. This site serves as a dynamic showcase of my evolving web development journey and the industry-standard skills I'm actively building",
     src: "/Portfolio-Website.png",
   }
 ];

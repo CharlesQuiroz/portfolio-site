@@ -16,7 +16,7 @@ const Page = () => {
           </span> 
           Designs
         </h1>
-        <div className='grid grid-cols-1 md:grid-cols-2 gap-8 w-full'>
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-4 w-full'>
           {Coding_Projects.map((project, index) => (
             <ProjectCard 
               key={index}

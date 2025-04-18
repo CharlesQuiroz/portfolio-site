@@ -41,7 +41,7 @@ export default function HeroText() {
   }, [subText, typing, index]);
 
   return (
-    <div className="flex flex-col text-white font-semibold text-[50px] leading-tight">
+    <div className="flex flex-col text-white font-semibold text-[40px] leading-tight">
       <h1>Where Ideas Come to Life</h1>
       <span className="relative block">
         <h1 className="invisible">
