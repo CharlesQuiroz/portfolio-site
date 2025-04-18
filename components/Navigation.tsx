@@ -48,6 +48,9 @@ const Navigation = () => {
 
   return (
     <>
+      {/* Global transition effect that works across all viewports */}
+      {isRouting && <Transition />}
+      
       {/* Mobile toggle button */}
       <button 
         className="md:hidden fixed z-50 bottom-6 right-6 bg-black p-3 rounded-full border border-white"
@@ -100,7 +103,6 @@ const Navigation = () => {
         md:w-[10%] md:right-[-30px] md:top-[80px]
         lg:w-[8%] lg:right-[-60px] lg:top-[80px]
       ">
-        {isRouting && <Transition />}
         {NavLinks.map((nav) => (
           <Link key={nav.name} href={nav.link} className="py-3 min-w-[80%]">
             <nav.icon

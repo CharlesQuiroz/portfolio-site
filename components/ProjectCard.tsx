@@ -23,12 +23,18 @@ const ProjectCard = ({ image, title, text }: Props) => {
   return (
     <div
       onClick={handleFlip}
-      className='w-full h-[260px] rounded-md cursor-pointer'>
-      <motion.div className='flip-card-inner w-full h-full'
+      className='w-full 
+                 h-[220px] sm:h-[260px] md:h-[300px] lg:h-[340px] 
+                 max-w-[95%] sm:max-w-[80%] md:max-w-[800px] 
+                 rounded-md cursor-pointer mx-auto'>
+
+      <motion.div 
+        className='flip-card-inner w-full h-full'
         initial={false}
         animate={{ rotateY: isFlipped ? 180 : 360 }}
         transition={{ duration: 0.6, animationDirection: 'normal' }}
-        onAnimationComplete={() => setIsAnimating(false)} >
+        onAnimationComplete={() => setIsAnimating(false)} 
+      >
         
         <div className='w-full h-full group relative flip-card-front rounded-lg p-4 overflow-hidden'>
           <div className='absolute inset-0 w-full h-full'>
@@ -66,6 +72,7 @@ const ProjectCard = ({ image, title, text }: Props) => {
             <p className='text-gray-200 text-sm'>{text}</p>                
           </div>
         </div>  
+
       </motion.div>
     </div>
   )
