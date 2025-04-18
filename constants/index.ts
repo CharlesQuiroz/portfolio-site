@@ -124,6 +124,18 @@ export const UiUxGraphicsSkillData = [
     width: 80,
     height: 80,
   },
+  {
+    name: "Rive",
+    Image: "/Rive-logo.svg",
+    width: 80,
+    height: 80,
+  },
+  {
+    name: "Lottiefiles",
+    Image: "/Lottie-logo.svg",
+    width: 80,
+    height: 80,
+  }
 
 ];
 

@@ -28,9 +28,13 @@ const Navigation = () => {
 
   return (
     <div
-      style={{ right: "-5%", top: "20%" }}
-      className="absolute z-[50] w-[20%] md:w-[10%] max-h-[300px] rounded-full flex flex-col justify-between items-center border bg-black border-white px-6 py-10"
-    >
+      className="
+      bg-black fixed z-[50] max-h-[300px] rounded-full
+      flex flex-col justify-between items-center border navbar border-white px-6 py-10 shadow-sm
+      w-[20%] right-[-40px] top-[80px]
+      md:w-[10%] md:right-[-30px] md:top-[80px]
+      lg:w-[8%] lg:right-[-60px] lg:top-[80px]
+    "    >
       {isRouting && <Transition />}
       {NavLinks.map((nav) => (
         <Link key={nav.name} href={nav.link} className="py-3 min-w-[80%]">

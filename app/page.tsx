@@ -16,7 +16,6 @@ export default function Home() {
     setContactModalOpen(false);
   };
 
-  // Only prevent scroll when contact modal is open
   useEffect(() => {
     if (isContactModalOpen) {
       document.body.style.overflow = "hidden";
@@ -44,7 +43,6 @@ export default function Home() {
             <div className="origin-left">
               <Typewriter />
             </div>
-
             <p className="text-gray-200 text-base md:text-lg lg:text-xm hidden md:block max-w-full">
               Hi there! I&apos;m excited to share my work with you. I&apos;m a developer and graphics enthusiast, passionate about building engaging web experiences and creating visually appealing designs. I enjoy tackling both front-end and back-end challenges, and I&apos;m always eager to learn and grow.
             </p>
@@ -105,14 +103,14 @@ export default function Home() {
         </div>
       </div>
       
-      {/* Adjusted city position */}
+      {/* Adjusted city position 
       <div className="absolute bottom-[-250px] md:bottom-[-300px] z-[5] w-full">
         <Image src="/City.png"
           alt="City"
           height={3000}
           width={3000}
           className="w-full" />
-      </div>
+      </div>*/}
 
       <Image src="/stars.png"
         alt="stars"

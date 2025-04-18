@@ -4,15 +4,15 @@ import "swiper/css"
 import React from "react"
 import Image from "next/image"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { FrontAndBackEndSkilLData, UiUxGraphicsSkillData} from "@/constants"
+import { FrontAndBackEndSkilLData, UiUxGraphicsSkillData } from "@/constants"
 import { Autoplay } from "swiper/modules"
 
 const Page = () => {
   return (
     <div
       style={{ backgroundImage: "url(/city-bg-1.jpg" }}
-      className="h-screen w-screen flex flex-col items-center justify-center bg-cover bg-center">
-      <div className="flex flex-col gap-20 max-w-[80%] text-center items-center mx-auto">
+      className="min-h-screen w-screen overflow-auto md:h-screen md:overflow-hidden flex flex-col items-center justify-center bg-cover bg-center">
+      <div className="flex flex-col gap-20 max-w-[80%] text-center items-center mx-auto py-16 md:py-0">
         <div className="flex flex-col items-center gap-4">
           <h1 className="font-semibold text-white text-[50px]"> Skills
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500">
@@ -20,7 +20,7 @@ const Page = () => {
               & {" "}
             </span> Technologies </h1>
           <p className="text-white-400 text-[20px]">
-          This portfolio demonstrates a foundational skill set in full-stack development, encompassing front-end technologies like React and Next.js, robust back-end systems built with C# and Java, and database management using Postgres. Additionally, it showcases my capabilities in UI/UX design and graphic design. As a recent graduate, I&quot;m eager to expand upon these skills and contribute to innovative projects.          </p>
+            This portfolio demonstrates a foundational skill set in full-stack development, encompassing front-end technologies like React and Next.js, robust back-end systems built with C# and Java, and database management using Postgres. Additionally, it showcases my capabilities in UI/UX design and graphic design. As a recent graduate, I&apos;m eager to expand upon these skills and contribute to innovative projects.          </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-2 gap-2 p-2">
           <div>
@@ -31,6 +31,11 @@ const Page = () => {
               </span> Backend </h5>
             <Swiper
               slidesPerView={5}
+              breakpoints={{
+                0: { slidesPerView: 2 },
+                640: { slidesPerView: 3 },
+                768: { slidesPerView: 5 }
+              }}
               loop={true}
               autoplay={{
                 delay: 0,
@@ -51,6 +56,11 @@ const Page = () => {
             </Swiper>
             <Swiper
               slidesPerView={5}
+              breakpoints={{
+                0: { slidesPerView: 2 },
+                640: { slidesPerView: 3 },
+                768: { slidesPerView: 5 }
+              }}
               loop={true}
               autoplay={{
                 delay: 0,
@@ -73,16 +83,21 @@ const Page = () => {
           </div>
           <div>
             <h5 className="font-semibold text-white text-[50px]"> UI/UX
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-red-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-purple-500">
                 {" "}
                 & {" "}
               </span> Video Editing </h5>
-            <Swiper
-              slidesPerView={3}
+              <Swiper
+               slidesPerView={4}
+               breakpoints={{
+                 0: { slidesPerView: 1 },
+                 640: { slidesPerView: 2 },
+                 768: { slidesPerView: 3 }
+               }}
               loop={true}
               autoplay={{
                 delay: 0,
-                disableOnInteraction: false
+                disableOnInteraction: false,
               }}
               speed={5000}
               modules={[Autoplay]}
@@ -98,7 +113,12 @@ const Page = () => {
               ))}
             </Swiper>
             <Swiper
-              slidesPerView={3}
+              slidesPerView={4}
+              breakpoints={{
+                0: { slidesPerView: 1 },
+                640: { slidesPerView: 2 },
+                768: { slidesPerView: 3 }
+              }}
               loop={true}
               autoplay={{
                 delay: 0,
