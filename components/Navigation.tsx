@@ -27,7 +27,6 @@ const Navigation = () => {
     }
   }, [isRouting]);
 
-  // Handle window resize
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -36,8 +35,6 @@ const Navigation = () => {
         setIsOpen(false);
       }
     };
-
-    // Set initial state based on screen size
     handleResize();
 
     window.addEventListener('resize', handleResize);
@@ -48,10 +45,7 @@ const Navigation = () => {
 
   return (
     <>
-      {/* Global transition effect that works across all viewports */}
       {isRouting && <Transition />}
-      
-      {/* Mobile toggle button */}
       <button 
         className="md:hidden fixed z-50 bottom-6 right-6 bg-black p-3 rounded-full border border-white"
         onClick={() => setIsOpen(!isOpen)}
@@ -71,7 +65,6 @@ const Navigation = () => {
         </svg>
       </button>
 
-      {/* Navigation for mobile (bottom bar) */}
       <div className={`
         md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black border-t border-white
         ${isOpen ? "translate-y-0" : "translate-y-full"}
@@ -95,7 +88,6 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Desktop navigation (side bar) */}
       <div className="
         hidden md:flex
         bg-black fixed z-[50] max-h-[300px] rounded-full
