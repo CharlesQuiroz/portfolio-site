@@ -28,12 +28,20 @@ const Transition = () => {
             : { scaleX: [0,1], transformOrigin: "left" }
     };
 
+    const zIndices = [30, 20, 10];
+    const bgColors = ["#2e2257", "#3b2d71", "#4b3792"];
+
     return (
         <div>
-            {[30, 20, 10].map((z, index) => (
+            {[0, 1, 2].map((index) => (
                 <motion.div
-                    key={z}
-                    className={`fixed inset-0 z-[${z}] bg-[#${["2e2257","3b2d71","4b3792"][index]}]`}
+                    key={index}
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: zIndices[index],
+                        backgroundColor: bgColors[index]
+                    }}
                     variants={variants}
                     initial="initial"
                     animate="animate"
