@@ -86,14 +86,7 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Fixed bottom buttons for mobile view */}
         <div className="absolute flex bottom-24 sm:bottom-10 z-[20] right-5 flex-col md:hidden gap-3">
-          <Link href="/my-skills" className="rounded-[20px] group relative bg-purple-500 px-5 border border-white py-2 text-base text-white max-w-[200px]">
-            Learn More
-          </Link>
-          <Link href="/my-projects" className="rounded-[20px] group relative bg-transparent px-5 border border-white py-2 text-base text-white max-w-[200px]">
-            My Projects
-          </Link>
           <button 
             onClick={openContactModal}
             className="rounded-[20px] group relative bg-transparent px-5 border border-white py-2 text-base text-white max-w-[200px]"
