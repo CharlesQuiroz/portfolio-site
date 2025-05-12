@@ -116,10 +116,12 @@ const Lightbox = ({
     onPrev: () => void;
     onNext: () => void;
 }) => {
-    if (!items.length) return null;
-
+    // Ensure hooks are called before any conditional logic
     const currentItem = items[currentIndex];
 
+    const scrollRef = useRef<HTMLDivElement>(null);  // Example, if you use scrollRef
+
+    // useEffect hook should always be called (not conditionally)
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
             switch (e.key) {
@@ -142,7 +144,10 @@ const Lightbox = ({
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [onClose, onPrev, onNext]); // ensure these are all in the dependency array
+    }, [onClose, onPrev, onNext]); // Dependency array ensures effect re-runs if necessary
+
+    // Conditional rendering for empty items
+    if (!items.length) return null;
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col justify-center items-center">
@@ -167,6 +172,7 @@ const Lightbox = ({
                     />
                 </div>
             </div>
+
             {/* Top-center navigation with index */}
             <div className="absolute top-4 left-1/2 -translate-x-1/2 flex items-center justify-center gap-4 text-white">
                 {/* Prev Button (←) */}
