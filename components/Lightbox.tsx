@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo,useRef } from "react";
 import Image from "next/image";
 
 // Gallery Category Type
@@ -116,12 +116,14 @@ const Lightbox = ({
     onPrev: () => void;
     onNext: () => void;
 }) => {
-    // Always call hooks unconditionally
-    const currentItem = items.length > 0 ? items[currentIndex] : null;
+    // Use useMemo to compute currentItem unconditionally
+    const currentItem = useMemo(() => {
+        return items.length > 0 ? items[currentIndex] : null;
+    }, [items, currentIndex]);
 
     // Unconditional useEffect
     useEffect(() => {
-        // Only add event listeners if items exist
+        // Skip event listeners if no items
         if (items.length === 0) return;
 
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -147,8 +149,14 @@ const Lightbox = ({
         };
     }, [items.length, onClose, onPrev, onNext]);
 
-    // Return null if no items
-    if (!items.length) return null;
+    // If no items, render a placeholder or nothing
+    if (!items.length) {
+        return (
+            <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center">
+                <p className="text-white">No images to display</p>
+            </div>
+        );
+    }
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col justify-center items-center">
