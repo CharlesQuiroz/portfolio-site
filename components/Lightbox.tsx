@@ -138,10 +138,11 @@ const Lightbox = ({
         };
 
         window.addEventListener("keydown", handleKeyDown);
+
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [onClose, onNext, onPrev]);
+    }, [onClose, onPrev, onNext]); // ensure these are all in the dependency array
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col justify-center items-center">

@@ -9,24 +9,27 @@ const Navigation = () => {
   const [isRouting, setIsRouting] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const path = usePathname();
-  const [prevPath, setPrevPath] = useState("/");
+  const [prevPath, setPrevPath] = useState(path); // Initialize with path
 
+  // Track if path changes and handle routing state
   useEffect(() => {
     if (prevPath !== path) {
       setIsRouting(true);
     }
-  }, [path, prevPath]);
+    setPrevPath(path); // Update prevPath with the new path
+  }, [path, prevPath]); // This ensures the previous path is updated correctly
 
+  // Reset isRouting after a delay once the route changes
   useEffect(() => {
     if (isRouting) {
-      setPrevPath(path);
       const timeout = setTimeout(() => {
         setIsRouting(false);
-      }, 1260);
+      }, 1260); // Duration matches the transition duration
       return () => clearTimeout(timeout);
     }
   }, [isRouting]);
 
+  // Handle window resize and update the menu open state accordingly
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) {
@@ -41,11 +44,13 @@ const Navigation = () => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, []); // Only run once on mount
 
   return (
     <>
       {isRouting && <Transition />}
+      
+      {/* Hamburger button for mobile */}
       <button 
         className="md:hidden fixed z-50 bottom-16 left-1/2 transform -translate-x-[22px] bg-black p-3 rounded-full border border-white"
         onClick={() => setIsOpen(!isOpen)}
@@ -65,8 +70,8 @@ const Navigation = () => {
         </svg>
       </button>
 
-      <div className={`
-        md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black border-t border-white
+      {/* Mobile navigation menu */}
+      <div className={`md:hidden fixed bottom-0 left-0 right-0 z-40 bg-black border-t border-white
         ${isOpen ? "translate-y-0" : "translate-y-full"}
         transition-transform duration-300
       `}>
@@ -79,28 +84,21 @@ const Navigation = () => {
               onClick={() => setIsOpen(false)}
             >
               <nav.icon
-                className={`w-[28px] h-[28px] ${
-                  path === nav.link ? "text-purple-800" : "text-white"
-                } transition-colors duration-300`}
+                className={`w-[28px] h-[28px] ${path === nav.link ? "text-purple-800" : "text-white"} transition-colors duration-300`}
               />
             </Link>
           ))}
         </div>
       </div>
 
-      <div className="
-        hidden md:flex
-        bg-black fixed z-[50] max-h-[300px] rounded-full
-        flex-col justify-between items-center border navbar border-white px-4 py-10 shadow-sm
-        md:w-[10%] md:right-[-30px] md:top-[80px]
-        lg:w-[8%] lg:right-[-60px] lg:top-[80px]
+      {/* Desktop sidebar navigation */}
+      <div className="hidden md:flex bg-black fixed z-[50] max-h-[300px] rounded-full flex-col justify-between items-center border navbar border-white px-4 py-10 shadow-sm
+        md:w-[10%] md:right-[-30px] md:top-[80px] lg:w-[8%] lg:right-[-60px] lg:top-[80px]
       ">
         {NavLinks.map((nav) => (
           <Link key={nav.name} href={nav.link} className="py-3 min-w-[80%]">
             <nav.icon
-              className={`w-[32px] h-[32px] ${
-                path === nav.link ? "text-purple-800" : "text-white"
-              } transition-colors duration-300`}
+              className={`w-[32px] h-[32px] ${path === nav.link ? "text-purple-800" : "text-white"} transition-colors duration-300`}
             />
           </Link>
         ))}
