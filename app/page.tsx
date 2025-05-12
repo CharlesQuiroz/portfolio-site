@@ -44,8 +44,7 @@ export default function Home() {
               <Typewriter />
             </div>
             <p className="text-gray-200 text-base text-justify md:text-lg lg:text-xm hidden md:block max-w-full">
-              Hi there! I'm excited to share my work with you. I'm a full-stack developer and visual artist with a passion for crafting immersive web experiences and compelling graphic designs. Whether it's coding dynamic interfaces or creating standout visuals, I love combining technical precision with creative flair. I'm always eager to take on new challenges and continue growing in both development and design.            </p>
-
+              Hi there! I&apos;m excited to share my work with you. I&apos;m a aspiring full-stack developer and visual artist with a passion for crafting immersive web experiences and compelling graphic designs. Whether it&apos;s coding dynamic interfaces or creating standout visuals, I love combining technical precision with creative flair. I&apos;m always eager to take on new challenges and continue growing in both development and design.            </p>
             <div className="hidden md:flex flex-wrap gap-3 md:gap-5 mt-2 md:mt-4">
               <Link href="/my-skills" className="rounded-[20px] group relative bg-purple-500 hover:bg-blue-400 px-2 md:px-4 border border-white py-3 md:py-4 text-sm md:text-base text-white whitespace-nowrap">
                 Learn More
