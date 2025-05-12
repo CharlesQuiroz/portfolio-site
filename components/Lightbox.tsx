@@ -116,10 +116,10 @@ const Lightbox = ({
     onPrev: () => void;
     onNext: () => void;
 }) => {
-    // Ensure hooks are called before any conditional logic
+    // Always call hooks at the top, no conditional logic before them
     const currentItem = items[currentIndex];
 
-    const scrollRef = useRef<HTMLDivElement>(null);  // Example, if you use scrollRef
+    const scrollRef = useRef<HTMLDivElement>(null);  // UseRef is always called first
 
     // useEffect hook should always be called (not conditionally)
     useEffect(() => {
@@ -146,7 +146,7 @@ const Lightbox = ({
         };
     }, [onClose, onPrev, onNext]); // Dependency array ensures effect re-runs if necessary
 
-    // Conditional rendering for empty items
+    // Conditional rendering for empty items, but only after hooks
     if (!items.length) return null;
 
     return (

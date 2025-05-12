@@ -225,15 +225,15 @@ export const PixelArts = [
 export const Sketches = [
   {
     title:"Hololive Justice Pixel Art",// same art as pixel art only acts as placeholder
-    src: "/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
+    src: "/PixelArt/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
   },
     {
     title:"Hololive Justice Pixel Art", // same art as pixel art only acts as placeholder
-    src: "/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
+    src: "/PixelArt/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
   },
     {
     title:"Hololive Justice Pixel Art", // same art as pixel art only acts as placeholder
-    src: "/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
+    src: "/PixelArt/HoloEN-Justice.png", // same art as pixel art only acts as placeholder
   }
 ];
 
