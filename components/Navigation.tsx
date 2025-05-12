@@ -47,7 +47,7 @@ const Navigation = () => {
     <>
       {isRouting && <Transition />}
       <button 
-        className="md:hidden fixed z-50 bottom-6 right-6 bg-black p-3 rounded-full border border-white"
+        className="md:hidden fixed z-50 bottom-16 left-1/2 transform -translate-x-[22px] bg-black p-3 rounded-full border border-white"
         onClick={() => setIsOpen(!isOpen)}
       >
         <svg 
@@ -91,7 +91,7 @@ const Navigation = () => {
       <div className="
         hidden md:flex
         bg-black fixed z-[50] max-h-[300px] rounded-full
-        flex-col justify-between items-center border navbar border-white px-6 py-10 shadow-sm
+        flex-col justify-between items-center border navbar border-white px-4 py-10 shadow-sm
         md:w-[10%] md:right-[-30px] md:top-[80px]
         lg:w-[8%] lg:right-[-60px] lg:top-[80px]
       ">
