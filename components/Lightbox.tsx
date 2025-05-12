@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo,useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import Image from "next/image";
 
 // Gallery Category Type
@@ -47,9 +47,7 @@ export const GallerySection = ({
     items?: GalleryCategory[];
     onImageClick: (categoryItems: GalleryCategory[], index: number) => void;
 }) => {
-    if (!items || !items.length) return null;
-
-    const scrollRef = useRef<HTMLDivElement>(null);
+    const scrollRef = useRef<HTMLDivElement>(null); // Always declare the ref first
 
     const scroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return;
@@ -60,6 +58,7 @@ export const GallerySection = ({
         });
     };
 
+    // Always render the section, even if there are no items
     return (
         <section className="mb-12 relative">
             <h2 className="text-2xl font-bold mb-6 text-white border-b pb-2">
@@ -86,17 +85,21 @@ export const GallerySection = ({
                 ref={scrollRef}
                 className="flex overflow-x-auto snap-x snap-mandatory scroll-smooth scrollbar-hide px-2 space-x-4"
             >
-                {items.map((item, index) => (
-                    <div
-                        key={`${title}-${index}`}
-                        className="snap-start flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-[370px] min-w-0"
-                    >
-                        <GalleryItem
-                            item={item}
-                            onClick={() => onImageClick(items, index)}
-                        />
-                    </div>
-                ))}
+                {items.length > 0 ? (
+                    items.map((item, index) => (
+                        <div
+                            key={`${title}-${index}`}
+                            className="snap-start flex-shrink-0 w-[80vw] sm:w-[60vw] md:w-[370px] min-w-0"
+                        >
+                            <GalleryItem
+                                item={item}
+                                onClick={() => onImageClick(items, index)}
+                            />
+                        </div>
+                    ))
+                ) : (
+                    <p className="text-white">No items available</p> // Placeholder message if no items exist
+                )}
             </div>
         </section>
     );
