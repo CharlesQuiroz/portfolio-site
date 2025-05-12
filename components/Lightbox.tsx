@@ -116,10 +116,14 @@ const Lightbox = ({
     onPrev: () => void;
     onNext: () => void;
 }) => {
+    // Move conditional check before any hooks are called
+    if (!items.length) return null;
+
     // Always call hooks at the top, no conditional logic before them
     const currentItem = items[currentIndex];
 
-    const scrollRef = useRef<HTMLDivElement>(null);  // UseRef is always called first
+    // Remove the unused scrollRef
+    // const scrollRef = useRef<HTMLDivElement>(null);  // Removed to address unused variable
 
     // useEffect hook should always be called (not conditionally)
     useEffect(() => {
@@ -145,9 +149,6 @@ const Lightbox = ({
             window.removeEventListener("keydown", handleKeyDown);
         };
     }, [onClose, onPrev, onNext]); // Dependency array ensures effect re-runs if necessary
-
-    // Conditional rendering for empty items, but only after hooks
-    if (!items.length) return null;
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col justify-center items-center">
