@@ -116,17 +116,14 @@ const Lightbox = ({
     onPrev: () => void;
     onNext: () => void;
 }) => {
-    // Move conditional check before any hooks are called
-    if (!items.length) return null;
+    // Always call hooks unconditionally
+    const currentItem = items.length > 0 ? items[currentIndex] : null;
 
-    // Always call hooks at the top, no conditional logic before them
-    const currentItem = items[currentIndex];
-
-    // Remove the unused scrollRef
-    // const scrollRef = useRef<HTMLDivElement>(null);  // Removed to address unused variable
-
-    // useEffect hook should always be called (not conditionally)
+    // Unconditional useEffect
     useEffect(() => {
+        // Only add event listeners if items exist
+        if (items.length === 0) return;
+
         const handleKeyDown = (e: KeyboardEvent) => {
             switch (e.key) {
                 case "ArrowLeft":
@@ -148,7 +145,10 @@ const Lightbox = ({
         return () => {
             window.removeEventListener("keydown", handleKeyDown);
         };
-    }, [onClose, onPrev, onNext]); // Dependency array ensures effect re-runs if necessary
+    }, [items.length, onClose, onPrev, onNext]);
+
+    // Return null if no items
+    if (!items.length) return null;
 
     return (
         <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col justify-center items-center">
@@ -164,13 +164,15 @@ const Lightbox = ({
 
             <div className="relative w-full max-w-4xl h-full max-h-[80vh] flex items-center justify-center p-4">
                 <div className="relative w-full h-full">
-                    <Image
-                        src={currentItem.src}
-                        alt={currentItem.title}
-                        fill
-                        className="object-contain"
-                        sizes="(max-width: 1024px) 100vw, 80vw"
-                    />
+                    {currentItem && (
+                        <Image
+                            src={currentItem.src}
+                            alt={currentItem.title}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 1024px) 100vw, 80vw"
+                        />
+                    )}
                 </div>
             </div>
 
@@ -206,7 +208,7 @@ const Lightbox = ({
             {/* Title below navigation */}
             <div className="absolute bottom-30 left-0 right-0 text-center text-white">
                 <h2 className="text-xl bg-black/60 font-bold mt-4 px-4 py-2 rounded w-full break-words">
-                    {currentItem.title}
+                    {currentItem?.title}
                 </h2>
             </div>
         </div>
